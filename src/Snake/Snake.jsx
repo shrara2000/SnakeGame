@@ -2,7 +2,18 @@
 import React from 'react';
 import segment from '../SnakeList';
 //
-
+const CheckCollision = (head) => {
+  let current = head?.getNext()?.getNext()?.getNext();
+  if (current === null) return false; // No segments to check against
+  while (current) {
+    if (head.getX() === current.getX() && head.getY() === current.getY()) {
+      
+      return true; // Collision detected
+    }
+    current = current.getNext();
+  }
+  return false; // No collision
+}
  const moveSegments = (head, newX, newY) => {
  if (head.next===null) return head;
  let current =head
@@ -39,7 +50,7 @@ return item;}
     current = current.getNext();
   }
 return segments;}
-const Snake = ({Score,Snake,setSnake}) => {
+const Snake = ({Score,Snake,setSnake,setGameOver}) => {
   // Calculate the position of the snake based on its coordinates
   const [prevMove, setPrevMove] = React.useState('');
   const canvas= document.getElementById('Canvas')
@@ -86,6 +97,10 @@ const Snake = ({Score,Snake,setSnake}) => {
           return; // Ignore other keys
      }}
      moveSegments(Snake, headBX, headBY);
+    if (CheckCollision(Snake)) {
+      setGameOver(true); // Set game over state if collision detected
+      return;
+    }
     
       
     

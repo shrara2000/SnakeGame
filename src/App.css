@@ -28,6 +28,16 @@
 .App-link {
   color: #61dafb;
 }
+.button {
+  border-radius: 5px;
+  background-color: lightgray;
+  margin-left: 10px;
+  font-size: large;
+  font-style: oblique;
+  color : green;
+  
+  
+}
 
 @keyframes App-logo-spin {
   from {

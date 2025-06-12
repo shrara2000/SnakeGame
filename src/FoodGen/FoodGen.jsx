@@ -3,11 +3,11 @@ import segment from '../SnakeList'
 const addSeg = (head) => {
   let current = head; 
   while (current.getNext()) {
-
+   
     current = current.getNext();
    
   }
-  current.setNext(new segment(current.getX()-10, current.getY(),));
+  current.setNext(new segment(current.getX()-10, current.getY()-10));
  
 }
 function FoodGen({currentXF,currentYF,setCurrentXF,setCurrentYF,Head,setScore,setSnake}) {
